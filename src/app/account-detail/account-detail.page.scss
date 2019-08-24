@@ -3,6 +3,7 @@ ion-avatar {
   height: 80px;
   z-index: 10;
   box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.24);
+  background: var(--ion-color-primary-contrast);
 }
 .avatar--row {
   position: relative;
