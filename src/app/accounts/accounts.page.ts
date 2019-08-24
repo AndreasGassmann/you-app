@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BoxService } from '../services/box.service';
 
 interface IAccount {
   id: string;
@@ -16,42 +17,53 @@ interface IAccount {
   templateUrl: 'accounts.page.html',
   styleUrls: ['accounts.page.scss']
 })
-export class accountsPage {
-  accounts: IAccount[] = [
-    {
-      id: '1',
-      title: 'Netflix',
-      icon:
-        'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-      username: 'myemail@gmail.com',
-      location: 'https://netflix.com',
-      lastUsed: new Date(),
-      group: 'Family',
-      tag: ['enterntainment']
-    },
-    {
-      id: '1',
-      title: 'Netflix',
-      icon:
-        'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-      username: 'myemail@gmail.com',
-      location: 'https://netflix.com',
-      lastUsed: new Date(),
-      group: 'Family',
-      tag: ['enterntainment']
-    },
-    {
-      id: '1',
-      title: 'Netflix',
-      icon:
-        'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-      username: 'myemail@gmail.com',
-      location: 'https://netflix.com',
-      lastUsed: new Date(),
-      group: 'Family',
-      tag: ['enterntainment']
-    }
-  ];
+export class accountsPage implements OnInit {
+  accounts: IAccount[] = [];
 
-  constructor() {}
+  constructor(private readonly boxService: BoxService) {}
+
+  async ngOnInit() {
+    await this.boxService.ready.promise;
+    console.log('ready');
+    /*
+    await this.boxService.storePasswords([
+      {
+        id: '1',
+        title: 'Netflix',
+        icon:
+          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
+        username: 'myemail@gmail.com',
+        location: 'https://netflix.com',
+        lastUsed: new Date(),
+        group: 'Family',
+        tag: ['enterntainment']
+      },
+      {
+        id: '1',
+        title: 'Netflix',
+        icon:
+          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
+        username: 'myemail@gmail.com',
+        location: 'https://netflix.com',
+        lastUsed: new Date(),
+        group: 'Family',
+        tag: ['enterntainment']
+      },
+      {
+        id: '1',
+        title: 'Netflix',
+        icon:
+          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
+        username: 'myemail@gmail.com',
+        location: 'https://netflix.com',
+        lastUsed: new Date(),
+        group: 'Family',
+        tag: ['enterntainment']
+      }
+    ]);*/
+    console.log('stored');
+    this.boxService.readPasswords().then(passwords => {
+      this.accounts = passwords;
+    });
+  }
 }

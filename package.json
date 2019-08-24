@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "3box": "^1.10.7",
     "@angular/common": "~8.1.2",
     "@angular/compiler": "~8.1.2",
     "@angular/core": "~8.1.2",
@@ -27,6 +28,9 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
+    "web3": "^1.2.1",
+    "web3-provider-engine": "^15.0.3",
+    "web3-hdwallet-provider": "^1.0.4-fix2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
