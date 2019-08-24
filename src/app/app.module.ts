@@ -16,6 +16,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { SecureStorageFactory } from './services/secure-storage.service.factory';
 import { SecureStorageService } from './services/secure-storage.service';
+import { Push } from '@ionic-native/push/ngx';
 
 library.add(fas, far); // add all icons
 @NgModule({
@@ -36,7 +37,8 @@ library.add(fas, far); // add all icons
       provide: SecureStorageService,
       useFactory: SecureStorageFactory,
       deps: [Platform]
-    }
+    },
+    Push
   ],
   bootstrap: [AppComponent]
 })

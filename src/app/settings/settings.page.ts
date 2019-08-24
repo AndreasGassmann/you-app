@@ -5,6 +5,10 @@ import {
 } from '../services/secure-storage.service';
 import { Platform } from '@ionic/angular';
 
+import * as bip39 from 'bip39';
+import { EthereumProtocol } from 'airgap-coin-lib';
+import { PushService } from '../services/push.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: 'settings.page.html',
@@ -14,7 +18,8 @@ export class settingsPage {
   mnemonic: string;
   constructor(
     private readonly platform: Platform,
-    private readonly secureStorageService: SecureStorageService
+    private readonly secureStorageService: SecureStorageService,
+    private readonly pushService: PushService
   ) {
     this.platform.ready().then(() => {
       this.useMnemonic1();
@@ -34,6 +39,16 @@ export class settingsPage {
   }
 
   private async useMnemonic() {
+    const seed: string = (bip39 as any).mnemonicToSeedHex(this.mnemonic);
+    const protocol = new EthereumProtocol();
+
+    const pubKey = protocol.getPublicKeyFromHexSecret(
+      seed,
+      protocol.standardDerivationPath
+    );
+    const address = await protocol.getAddressFromPublicKey(pubKey);
+    this.pushService.register(address);
+
     const secureStorage: SecureStorage = await this.secureStorageService.get(
       'secret',
       false

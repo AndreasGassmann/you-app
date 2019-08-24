@@ -10,16 +10,19 @@ export class ApiService {
   constructor(private readonly http: HttpClient) {}
 
   registerPushToken(address: string, pushToken: string) {
-    return this.http.post(`${this.baseUrl}/push/register`, {
-      address,
-      pushToken
-    });
+    if (address && pushToken) {
+      return this.http.post(`${this.baseUrl}/push/register`, {
+        address,
+        pushToken
+      });
+    }
   }
 
-  sendLoginResponse(encryptedPassword: string, recipient: string) {
+  sendLoginResponse(uuid: string, username: string, password: string) {
     return this.http.post(`${this.baseUrl}/login-response`, {
-      encryptedPassword,
-      recipient
+      uuid,
+      username,
+      password
     });
   }
 }
