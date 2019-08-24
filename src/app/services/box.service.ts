@@ -62,26 +62,25 @@ export class BoxService {
         // });
 
         // box.public.set('name', 'Molly the Panda');
-        /*
-      box.openSpace('you1').then(space => {
-        console.log(space);
-        space
-          .joinThread('login', {
-            // firstModerator: '0x7D748F41a1d55DED34cDFF777795867579A77068',
-            firstModerator: '0xb2Fd35b8Ac12799A35780e89a50861D1EcDD290d',
-            members: true
-          })
-          .then(thread => {
-            thread.post('app' + Date());
 
-            console.log('thread', thread);
-            thread.listMembers().then(console.log);
-            thread.getPosts().then(res => {
-              console.log('res', res);
-            });
-          });
-      });
-      */
+        // box.openSpace('you1').then(space => {
+        //   console.log(space);
+        //   space
+        //     .joinThread('login', {
+        //       // firstModerator: '0x7D748F41a1d55DED34cDFF777795867579A77068',
+        //       firstModerator: '0xb2Fd35b8Ac12799A35780e89a50861D1EcDD290d',
+        //       members: true
+        //     })
+        //     .then(thread => {
+        //       thread.post('app' + Date());
+
+        //       console.log('thread', thread);
+        //       thread.listMembers().then(console.log);
+        //       thread.getPosts().then(res => {
+        //         console.log('res', res);
+        //       });
+        //     });
+        // });
       })
       .catch(error => {
         this.ready.reject(error);
