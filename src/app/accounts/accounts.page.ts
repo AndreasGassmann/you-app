@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BoxService } from '../services/box.service';
+import { Component, OnInit } from "@angular/core";
+import { BoxService } from "../services/box.service";
 
 interface IAccount {
   id: string;
@@ -13,9 +13,9 @@ interface IAccount {
 }
 
 @Component({
-  selector: 'app-accounts',
-  templateUrl: 'accounts.page.html',
-  styleUrls: ['accounts.page.scss']
+  selector: "app-accounts",
+  templateUrl: "accounts.page.html",
+  styleUrls: ["accounts.page.scss"]
 })
 export class accountsPage implements OnInit {
   accounts: IAccount[] = [];
@@ -24,7 +24,7 @@ export class accountsPage implements OnInit {
 
   async ngOnInit() {
     await this.boxService.ready.promise;
-    console.log('ready');
+    console.log("ready");
     /*
     await this.boxService.storePasswords([
       {
@@ -61,7 +61,7 @@ export class accountsPage implements OnInit {
         tag: ['enterntainment']
       }
     ]);*/
-    console.log('stored');
+    console.log("stored");
     this.boxService.readPasswords().then(passwords => {
       this.accounts = passwords;
     });

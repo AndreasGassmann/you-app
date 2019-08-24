@@ -134,7 +134,7 @@
 $customColors: ("green", "blue", "red", "gray", "violet", "yellow", "orange");
 @each $color in $customColors {
   .ion-color-#{$color} {
-    --ion-color-base: var(--ion-color-#{$color});
+    --ion-color-base: var(--ion-color-#{$color}) !important;
     --ion-color-base-rgb: var(--ion-color-#{$color}-rgb);
     --ion-color-contrast: var(--ion-color-#{$color}-contrast);
     --ion-color-contrast-rgb: var(--ion-color-#{$color}-contrast-rgb);
