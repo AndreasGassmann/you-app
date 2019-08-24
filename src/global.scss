@@ -28,3 +28,9 @@
 .display--flex {
   display: flex;
 }
+
+.btn--rounded {
+  --border-radius: 50%;
+  height: 48px;
+  width: 48px;
+}

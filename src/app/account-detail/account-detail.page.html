@@ -4,6 +4,11 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Account Detail</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="dark">
+        <ion-icon slot="icon-only" name="more"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -27,32 +32,51 @@
         <ion-chip color="secondary">
           <ion-label color="dark">Entertainment</ion-label>
         </ion-chip>
-      </ion-row></ion-card-content
-    >
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-padding-top">
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="primary"
+          mode="ios"
+        >
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="primary"
+          mode="ios"
+        >
+          <ion-icon name="share"></ion-icon>
+        </ion-button> </ion-row
+    ></ion-card-content>
   </ion-card>
-  <ion-list lines="none">
-    <ion-list-header>
-      <ion-label>Last Used</ion-label>
-    </ion-list-header>
-    <ion-item>
-      <ion-label slot="start">
-        22.08.18
-      </ion-label>
-      <p slot="end"><ion-text color="medium">18:32:01</ion-text></p>
-    </ion-item>
-    <ion-item>
-      <ion-label slot="start">
-        20.08.18
-      </ion-label>
-      <p slot="end"><ion-text color="medium">16:41:21</ion-text></p>
-    </ion-item>
-    <ion-item>
-      <ion-label slot="start">
-        19.08.18
-      </ion-label>
-      <p slot="end"><ion-text color="medium">11:18:35</ion-text></p>
-    </ion-item>
-  </ion-list>
+  <ion-card class="ion-no-margin" mode="ios">
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Last Used</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label slot="start">
+          22.08.18
+        </ion-label>
+        <p slot="end"><ion-text color="medium">18:32:01</ion-text></p>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">
+          20.08.18
+        </ion-label>
+        <p slot="end"><ion-text color="medium">16:41:21</ion-text></p>
+      </ion-item>
+      <ion-item>
+        <ion-label slot="start">
+          19.08.18
+        </ion-label>
+        <p slot="end"><ion-text color="medium">11:18:35</ion-text></p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
 
 <!-- use for prompt 
