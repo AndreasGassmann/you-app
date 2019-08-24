@@ -7,8 +7,15 @@
 </ion-header>
 
 <ion-content>
-  Active mnemonic: {{ mnemonic }}
+  <ion-list-header> Active Mnemonic </ion-list-header>
+  <ion-row class="ion-padding-horizontal">
+    <ion-col>
+      {{ mnemonic }}
+    </ion-col>
+  </ion-row>
   <ion-list>
+    <ion-list-header> Switch Mnemonic </ion-list-header>
+
     <ion-item (click)="useMnemonic1()">
       Use test mnemonic 1
     </ion-item>
