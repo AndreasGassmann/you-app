@@ -10,7 +10,10 @@
   <ion-searchbar mode="ios"></ion-searchbar>
 
   <ion-list lines="none">
-    <ion-item *ngFor="let account of accounts">
+    <ion-item
+      *ngFor="let account of accounts"
+      [routerLink]="['/account', account.id]"
+    >
       <ion-avatar slot="start">
         <img [src]="account.icon" />
       </ion-avatar>

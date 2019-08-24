@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 interface IAccount {
+  id: string;
   title: string;
   icon: string;
   username: string;
@@ -18,6 +19,7 @@ interface IAccount {
 export class accountsPage {
   accounts: IAccount[] = [
     {
+      id: '1',
       title: 'Netflix',
       icon:
         'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
@@ -28,6 +30,7 @@ export class accountsPage {
       tag: ['enterntainment']
     },
     {
+      id: '1',
       title: 'Netflix',
       icon:
         'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
@@ -38,6 +41,7 @@ export class accountsPage {
       tag: ['enterntainment']
     },
     {
+      id: '1',
       title: 'Netflix',
       icon:
         'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
