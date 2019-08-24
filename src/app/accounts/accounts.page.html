@@ -8,8 +8,40 @@
 
 <ion-content>
   <ion-searchbar mode="ios"></ion-searchbar>
-
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Tags</ion-label>
+    </ion-list-header>
+  </ion-list>
+  <ion-row class="ion-padding-horizontal">
+    <ion-col class="ion-no-padding display--flex ion-justify-content-between	">
+      <ion-button slots="icon-only" color="primary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="secondary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="tertiary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="success" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="primary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="primary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+      <ion-button slots="icon-only" color="primary" mode="ios">
+        <ion-icon name="albums"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
   <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Accounts</ion-label>
+    </ion-list-header>
     <ion-item
       *ngFor="let account of accounts"
       [routerLink]="['/account', account.id]"
@@ -21,6 +53,9 @@
         <h2>{{ account.title }}</h2>
         <p>{{ account.location }}</p>
       </ion-label>
+      <ion-chip color="secondary" slot="end">
+        <ion-label color="dark">Entertainment</ion-label>
+      </ion-chip>
     </ion-item>
   </ion-list>
 </ion-content>
