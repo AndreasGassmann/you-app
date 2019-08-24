@@ -8,71 +8,72 @@
 
 <ion-content>
   <ion-searchbar mode="ios"></ion-searchbar>
-  <ion-list>
+  <ion-list class="ion-no-margin">
     <ion-list-header>
       <ion-label>Categories</ion-label>
     </ion-list-header>
+    <ion-row class="ion-padding-horizontal">
+      <ion-col class="ion-no-padding display--flex ion-justify-content-between	">
+        <ion-button
+          class="btn--rounded"
+          slots="icon-only"
+          color="green"
+          mode="ios"
+        >
+          <fa-icon icon="piggy-bank"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="blue"
+          mode="ios"
+        >
+          <fa-icon icon="envelope"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="red"
+          mode="ios"
+        >
+          <fa-icon icon="briefcase"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="gray"
+          mode="ios"
+        >
+          <fa-icon icon="brain"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="violet"
+          mode="ios"
+        >
+          <fa-icon icon="film"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="yellow"
+          mode="ios"
+        >
+          <fa-icon icon="running"></fa-icon>
+        </ion-button>
+        <ion-button
+          class="btn--rounded "
+          slots="icon-only"
+          color="orange"
+          mode="ios"
+        >
+          <fa-icon icon="hashtag"></fa-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
   </ion-list>
-  <ion-row class="ion-padding-horizontal">
-    <ion-col class="ion-no-padding display--flex ion-justify-content-between	">
-      <ion-button
-        class="btn--rounded"
-        slots="icon-only"
-        color="green"
-        mode="ios"
-      >
-        <fa-icon icon="piggy-bank"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="blue"
-        mode="ios"
-      >
-        <fa-icon icon="envelope"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="red"
-        mode="ios"
-      >
-        <fa-icon icon="briefcase"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="gray"
-        mode="ios"
-      >
-        <fa-icon icon="brain"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="violet"
-        mode="ios"
-      >
-        <fa-icon icon="film"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="yellow"
-        mode="ios"
-      >
-        <fa-icon icon="running"></fa-icon>
-      </ion-button>
-      <ion-button
-        class="btn--rounded "
-        slots="icon-only"
-        color="orange"
-        mode="ios"
-      >
-        <fa-icon icon="hashtag"></fa-icon>
-      </ion-button>
-    </ion-col>
-  </ion-row>
+
   <ion-list lines="none">
     <ion-list-header>
       <ion-label>Accounts</ion-label>
@@ -80,6 +81,7 @@
     <ion-item
       *ngFor="let account of accounts"
       [routerLink]="['/account', account.id]"
+      detail="false"
     >
       <ion-avatar slot="start">
         <img [src]="account.icon" />
