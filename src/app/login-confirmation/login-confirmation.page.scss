@@ -1,0 +1,21 @@
+ion-avatar {
+  width: 80px;
+  height: 80px;
+  z-index: 10;
+  box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.24);
+  background: var(--ion-color-primary-contrast);
+}
+.avatar--row {
+  position: relative;
+  top: 56px;
+}
+ion-content {
+  --background: var(--ion-color-primary-tint);
+}
+.sc-ion-card-ios-h {
+  margin-bottom: 40px;
+  --background: var(--ion-color-primary-contrast);
+}
+.bottom--card {
+  border-radius: 0;
+}

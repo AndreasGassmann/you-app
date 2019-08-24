@@ -10,7 +10,8 @@ const routes: Routes = [
     path: 'account/:accountId',
     loadChildren:
       './account-detail/account-detail.module#AccountDetailPageModule'
-  }
+  },
+  { path: 'login-confirmation', loadChildren: './login-confirmation/login-confirmation.module#LoginConfirmationPageModule' }
 ];
 @NgModule({
   imports: [
