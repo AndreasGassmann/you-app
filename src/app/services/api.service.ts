@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  baseUrl = 'http://localhost:3000';
+  baseUrl = 'https://you-backend.herokuapp.com';
 
   constructor(private readonly http: HttpClient) {}
 

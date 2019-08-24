@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { BoxService } from './services/box.service';
 
+declare let SecurityUtils: any;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -25,6 +27,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.boxService.init();
+      if (this.platform.is('cordova')) {
+        SecurityUtils.LocalAuthentication.toggleAutomaticAuthentication(true);
+      }
     });
   }
 }
