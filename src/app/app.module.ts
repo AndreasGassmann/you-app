@@ -18,10 +18,12 @@ import { SecureStorageFactory } from './services/secure-storage.service.factory'
 import { SecureStorageService } from './services/secure-storage.service';
 import { Push } from '@ionic-native/push/ngx';
 
+import { LoginConfirmationPage } from './login-confirmation/login-confirmation.page';
+
 library.add(fas, far); // add all icons
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, LoginConfirmationPage],
+  entryComponents: [LoginConfirmationPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

@@ -98,8 +98,6 @@ export class BoxService {
 
   async readPasswords() {
     const space = await this.box.openSpace('you');
-    console.log(space);
-    console.log(space.private);
     const passwords = JSON.parse(await space.private.get('passwords'));
     return passwords;
   }

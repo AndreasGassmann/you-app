@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Platform } from '@ionic/angular';
+import { Platform, ModalController } from '@ionic/angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
+import { LoginConfirmationPage } from '../login-confirmation/login-confirmation.page';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class PushService {
   constructor(
     private readonly platform: Platform,
     private readonly apiService: ApiService,
-    private readonly push: Push
+    private readonly push: Push,
+    private readonly modalController: ModalController
   ) {
     // this.register()
   }
@@ -39,9 +41,23 @@ export class PushService {
 
         const pushObject: PushObject = this.push.init(options);
 
-        pushObject.on('notification').subscribe((notification: any) => {
+        pushObject.on('notification').subscribe(async (notification: any) => {
           console.log('Received a notification', JSON.stringify(notification));
           const { uuid, location } = notification.additionalData;
+
+          const username = 'placeholder';
+          const password = 'placeholder';
+
+          const modal = await this.modalController.create({
+            component: LoginConfirmationPage,
+            componentProps: {
+              uuid,
+              username,
+              password
+            }
+          });
+
+          modal.present().catch(error => console.error('Modal in push', error));
         });
 
         pushObject.on('registration').subscribe((registration: any) => {

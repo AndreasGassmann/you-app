@@ -10,19 +10,39 @@ export class ApiService {
   constructor(private readonly http: HttpClient) {}
 
   registerPushToken(address: string, pushToken: string) {
+    console.log('API: registering push token', address, pushToken);
     if (address && pushToken) {
-      return this.http.post(`${this.baseUrl}/push/register`, {
-        address,
-        pushToken
-      });
+      console.log(
+        'inside if, sending request',
+        `${this.baseUrl}/push/register`
+      );
+      return this.http
+        .post(
+          `${this.baseUrl}/push/register`,
+          {
+            address,
+            pushToken
+          },
+          { responseType: 'text' }
+        )
+        .toPromise()
+        .catch(error => console.error('API', error));
     }
   }
 
   sendLoginResponse(uuid: string, username: string, password: string) {
-    return this.http.post(`${this.baseUrl}/login-response`, {
-      uuid,
-      username,
-      password
-    });
+    console.log('Sending login response', arguments);
+    return this.http
+      .post(
+        `${this.baseUrl}/login/response`,
+        {
+          uuid,
+          username,
+          password
+        },
+        { responseType: 'text' }
+      )
+      .toPromise()
+      .catch(error => console.error('API', error));
   }
 }
