@@ -1,3 +1,9 @@
 .list-ios {
   margin-bottom: 16px;
 }
+
+.btn--rounded {
+  --border-radius: 50%;
+  height: 42px;
+  width: 42px;
+}
