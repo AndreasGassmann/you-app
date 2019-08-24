@@ -10,48 +10,13 @@
   <ion-searchbar mode="ios"></ion-searchbar>
 
   <ion-list lines="none">
-    <ion-item>
+    <ion-item *ngFor="let account of accounts">
       <ion-avatar slot="start">
-        <img
-          src="https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg"
-        />
+        <img [src]="account.icon" />
       </ion-avatar>
       <ion-label>
-        <h2>Netflix</h2>
-        <p>netflix.com</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img
-          src="https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg"
-        />
-      </ion-avatar>
-      <ion-label>
-        <h2>Netflix</h2>
-        <p>netflix.com</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img
-          src="https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg"
-        />
-      </ion-avatar>
-      <ion-label>
-        <h2>Netflix</h2>
-        <p>netflix.com</p>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-avatar slot="start">
-        <img
-          src="https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg"
-        />
-      </ion-avatar>
-      <ion-label>
-        <h2>Netflix</h2>
-        <p>netflix.com</p>
+        <h2>{{ account.title }}</h2>
+        <p>{{ account.location }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
