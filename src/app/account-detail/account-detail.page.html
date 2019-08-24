@@ -1,7 +1,64 @@
 <ion-header no-border no-shadow>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
     <ion-title>Account Detail</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-row class="avatar--row ion-justify-content-center">
+    <ion-avatar>
+      <img src="https://randomuser.me/api/portraits/men/46.jpg" />
+    </ion-avatar>
+  </ion-row>
+  <ion-card mode="ios">
+    <ion-card-header class="ion-margin-top"
+      ><ion-card-title class="ion-margin-top ion-text-center"
+        >Netflix</ion-card-title
+      >
+      <ion-card-subtitle class="ion-text-center">
+        netflix.com
+      </ion-card-subtitle></ion-card-header
+    >
+    <ion-card-content
+      ><ion-row class="ion-justify-content-center">
+        <ion-chip color="secondary">
+          <ion-label color="dark">Entertainment</ion-label>
+        </ion-chip>
+      </ion-row></ion-card-content
+    >
+  </ion-card>
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>Last Used</ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label slot="start">
+        22.08.18
+      </ion-label>
+      <p slot="end"><ion-text color="medium">18:32:01</ion-text></p>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">
+        20.08.18
+      </ion-label>
+      <p slot="end"><ion-text color="medium">16:41:21</ion-text></p>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">
+        19.08.18
+      </ion-label>
+      <p slot="end"><ion-text color="medium">11:18:35</ion-text></p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- use for prompt 
+<ion-footer no-border no-shadow>
+  <ion-toolbar class="ion-padding">
+    <ion-button fill="solid" expand="block" mode="ios">Login</ion-button>
+  </ion-toolbar>
+</ion-footer>
+-->
