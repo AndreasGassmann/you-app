@@ -6,4 +6,17 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  Active mnemonic: {{ mnemonic }}
+  <ion-list>
+    <ion-item (click)="useMnemonic1()">
+      Use test mnemonic 1
+    </ion-item>
+    <ion-item (click)="useMnemonic2()">
+      Use test mnemonic 2
+    </ion-item>
+    <ion-item>
+      Use AirGap Vault
+    </ion-item>
+  </ion-list>
+</ion-content>
