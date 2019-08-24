@@ -1,53 +1,57 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { TabsPage } from "./tabs.page";
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: "tabs",
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: "accounts",
         children: [
           {
-            path: '',
+            path: "",
             loadChildren: () =>
-              import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+              import("../accounts/accounts.module").then(
+                m => m.accountsPageModule
+              )
           }
         ]
       },
       {
-        path: 'tab2',
+        path: "clients",
         children: [
           {
-            path: '',
+            path: "",
             loadChildren: () =>
-              import('../tab2/tab2.module').then(m => m.Tab2PageModule)
+              import("../clients/clients.module").then(m => m.clientsPageModule)
           }
         ]
       },
       {
-        path: 'tab3',
+        path: "settings",
         children: [
           {
-            path: '',
+            path: "",
             loadChildren: () =>
-              import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+              import("../settings/settings.module").then(
+                m => m.settingsPageModule
+              )
           }
         ]
       },
       {
-        path: '',
-        redirectTo: '/tabs/tab1',
-        pathMatch: 'full'
+        path: "",
+        redirectTo: "/tabs/accounts",
+        pathMatch: "full"
       }
     ]
   },
   {
-    path: '',
-    redirectTo: '/tabs/tab1',
-    pathMatch: 'full'
+    path: "",
+    redirectTo: "/tabs/accounts",
+    pathMatch: "full"
   }
 ];
 
