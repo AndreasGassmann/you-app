@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ApiService } from "../services/api.service";
 import { ActivatedRouteSnapshot, ActivatedRoute } from "@angular/router";
 import { IAccount, PasswordService } from "../services/password.service";
+import { ModalController } from "@ionic/angular";
+import { LoginConfirmationPage } from "../login-confirmation/login-confirmation.page";
 
 @Component({
   selector: "app-account-detail",
@@ -17,7 +19,8 @@ export class AccountDetailPage implements OnInit {
   constructor(
     private readonly apiService: ApiService,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly passwordService: PasswordService
+    private readonly passwordService: PasswordService,
+    private readonly modalController: ModalController
   ) {
     const id = this.activatedRoute.snapshot.paramMap.get("accountId");
     console.log(id);
@@ -28,7 +31,18 @@ export class AccountDetailPage implements OnInit {
 
   ngOnInit() {}
 
-  authorizeLogin() {
-    this.apiService.sendLoginResponse(this.uuid, this.username, this.password);
+  async promptLogin() {
+    console.log("triggering modal");
+    const modal = await this.modalController.create({
+      component: LoginConfirmationPage,
+      componentProps: {
+        account: this.account,
+        uuid: this.uuid,
+        username: this.account.username,
+        password: this.account.password
+      }
+    });
+
+    modal.present().catch(error => console.error("Modal in push", error));
   }
 }

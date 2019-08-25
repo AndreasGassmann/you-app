@@ -72,7 +72,7 @@ export class PushService {
               modal
                 .present()
                 .catch(error => console.error("Modal in push", error));
-            }, 500);
+            }, 1000);
           } catch (error) {
             const alert = await this.alertController.create({
               header: error.message

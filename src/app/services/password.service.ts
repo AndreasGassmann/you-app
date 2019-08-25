@@ -24,6 +24,45 @@ export class PasswordService {
     private readonly boxService: BoxService,
     private readonly secureStorageService: SecureStorageService
   ) {
+    window.localStorage.setItem(
+      "accounts",
+      JSON.stringify([
+        {
+          id: "1",
+          title: "Coinbase",
+          icon: "assets/images/coinbase-logo.png",
+          username: "satoshi@gmail.com",
+          password: "mySecretPassword",
+          location: "www.coinbase.com",
+          lastUsed: new Date(),
+          group: "Crypto",
+          tag: ["ETH", "Bitcoin"]
+        },
+        {
+          id: "2",
+          title: "Amazon",
+          icon: "assets/images/amazon-logo.jpg",
+          username: "satoshi@gmail.com",
+          password: "mySecretPassword",
+          location: "www.amazon.com",
+          lastUsed: new Date(),
+          group: "Entertainment",
+          tag: ["enterntainment"]
+        },
+        {
+          id: "3",
+          title: "Netflix",
+          icon: "assets/images/netflix-logo.png",
+          username: "satoshi@gmail.com",
+          password: "mySecretPassword",
+          location: "www.netflix.com",
+          lastUsed: new Date(),
+          group: "Entertainment",
+          tag: ["enterntainment"]
+        }
+      ])
+    );
+
     const cachedAccountsString = window.localStorage.getItem("accounts");
     if (cachedAccountsString) {
       console.log("READING FROM CACHE");
