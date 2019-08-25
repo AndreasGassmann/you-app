@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { ViewController } from '@ionic/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
+import { ViewController } from "@ionic/core";
+import { ModalController } from "@ionic/angular";
+import { IAccount } from "../services/password.service";
 
 @Component({
-  selector: 'app-login-confirmation',
-  templateUrl: './login-confirmation.page.html',
-  styleUrls: ['./login-confirmation.page.scss']
+  selector: "app-login-confirmation",
+  templateUrl: "./login-confirmation.page.html",
+  styleUrls: ["./login-confirmation.page.scss"]
 })
 export class LoginConfirmationPage implements OnInit {
+  account: IAccount;
+
   uuid: string;
   username: string;
   password: string;

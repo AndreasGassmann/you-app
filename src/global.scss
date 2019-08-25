@@ -28,3 +28,6 @@
 .display--flex {
   display: flex;
 }
+ion-avatar img {
+  object-fit: contain;
+}

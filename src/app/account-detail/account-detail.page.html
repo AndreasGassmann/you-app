@@ -12,32 +12,32 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="account">
   <ion-row class="avatar--row ion-justify-content-center">
     <ion-avatar>
-      <img src="https://randomuser.me/api/portraits/men/46.jpg" />
+      <img [src]="account.icon" />
     </ion-avatar>
   </ion-row>
   <ion-card mode="ios">
     <ion-card-header class="ion-margin-top"
-      ><ion-card-title class="ion-margin-top ion-text-center"
-        >Netflix</ion-card-title
-      >
+      ><ion-card-title class="ion-margin-top ion-text-center">{{
+        account.title
+      }}</ion-card-title>
       <ion-card-subtitle class="ion-text-center">
-        netflix.com
+        {{ account.location }}
       </ion-card-subtitle></ion-card-header
     >
     <ion-card-content
       ><ion-row class="ion-justify-content-center">
         <ion-chip color="secondary">
-          <ion-label color="dark">Entertainment</ion-label>
+          <ion-label color="dark">{{ account.group }}</ion-label>
         </ion-chip>
       </ion-row>
       <ion-row>
         <ion-list lines="none">
           <ion-item>
             <ion-label position="fixed">Username</ion-label>
-            <ion-input disabled>john.smith@gmail.com</ion-input>
+            <ion-input disabled>{{ account.username }}</ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="fixed">Password</ion-label>
