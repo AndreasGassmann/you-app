@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { Platform, ModalController } from '@ionic/angular';
+import { Platform, ModalController, AlertController } from '@ionic/angular';
 import { Push, PushObject, PushOptions } from '@ionic-native/push/ngx';
 import { LoginConfirmationPage } from '../login-confirmation/login-confirmation.page';
+import { PasswordService } from './password.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,9 @@ export class PushService {
     private readonly platform: Platform,
     private readonly apiService: ApiService,
     private readonly push: Push,
-    private readonly modalController: ModalController
+    private readonly modalController: ModalController,
+    private readonly passwordService: PasswordService,
+    private readonly alertController: AlertController
   ) {
     // this.register()
   }
@@ -45,19 +48,32 @@ export class PushService {
           console.log('Received a notification', JSON.stringify(notification));
           const { uuid, location } = notification.additionalData;
 
-          const username = 'placeholder';
-          const password = 'placeholder';
-
-          const modal = await this.modalController.create({
-            component: LoginConfirmationPage,
-            componentProps: {
-              uuid,
+          try {
+            const {
               username,
               password
-            }
-          });
+            } = await this.passwordService.getPasswordForLocation(location);
 
-          modal.present().catch(error => console.error('Modal in push', error));
+            setTimeout(async () => {
+              const modal = await this.modalController.create({
+                component: LoginConfirmationPage,
+                componentProps: {
+                  uuid,
+                  username,
+                  password
+                }
+              });
+
+              modal
+                .present()
+                .catch(error => console.error('Modal in push', error));
+            }, 500);
+          } catch (error) {
+            const alert = await this.alertController.create({
+              header: error.message
+            });
+            alert.present();
+          }
         });
 
         pushObject.on('registration').subscribe((registration: any) => {

@@ -1,16 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { BoxService } from "../services/box.service";
-
-interface IAccount {
-  id: string;
-  title: string;
-  icon: string;
-  username: string;
-  location: string;
-  lastUsed: Date;
-  group: string;
-  tag: string[];
-}
+import { IAccount, PasswordService } from "../services/password.service";
+import { SecureStorageService } from "../services/secure-storage.service";
 
 @Component({
   selector: "app-accounts",
@@ -20,50 +11,64 @@ interface IAccount {
 export class accountsPage implements OnInit {
   accounts: IAccount[] = [];
 
-  constructor(private readonly boxService: BoxService) {}
+  constructor(
+    private readonly passwordService: PasswordService,
+    private readonly boxService: BoxService,
+    private readonly secureStorageService: SecureStorageService
+  ) {}
 
   async ngOnInit() {
-    await this.boxService.ready.promise;
     console.log("ready");
+    this.checkForAccounts(); // TODO: Use observables
     /*
-    await this.boxService.storePasswords([
+    const secureStorage = await this.secureStorageService.get("secret", false);
+    const mnemonic = await secureStorage.getItem("secret");
+    await this.boxService.storePasswords("main", mnemonic, [
       {
-        id: '1',
-        title: 'Netflix',
-        icon:
-          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-        username: 'myemail@gmail.com',
-        location: 'https://netflix.com',
+        id: "1",
+        title: "Coinbase",
+        icon: "assets/images/coinbase-logo.png",
+        username: "satoshi@gmail.com",
+        password: "mySecretPassword",
+        location: "www.coinbase.com",
         lastUsed: new Date(),
-        group: 'Family',
-        tag: ['enterntainment']
+        group: "Crypto",
+        tag: ["ETH", "Bitcoin"]
       },
       {
-        id: '1',
-        title: 'Netflix',
-        icon:
-          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-        username: 'myemail@gmail.com',
-        location: 'https://netflix.com',
+        id: "2",
+        title: "Amazon",
+        icon: "assets/images/amazon-logo.jpg",
+        username: "satoshi@gmail.com",
+        password: "mySecretPassword",
+        location: "www.amazon.com",
         lastUsed: new Date(),
-        group: 'Family',
-        tag: ['enterntainment']
+        group: "Entertainment",
+        tag: ["enterntainment"]
       },
       {
-        id: '1',
-        title: 'Netflix',
-        icon:
-          'https://pbs.twimg.com/profile_images/974736784906248192/gPZwCbdS.jpg',
-        username: 'myemail@gmail.com',
-        location: 'https://netflix.com',
+        id: "3",
+        title: "Netflix",
+        icon: "assets/images/netflix-logo.png",
+        username: "satoshi@gmail.com",
+        password: "mySecretPassword",
+        location: "www.netflix.com",
         lastUsed: new Date(),
-        group: 'Family',
-        tag: ['enterntainment']
+        group: "Entertainment",
+        tag: ["enterntainment"]
       }
-    ]);*/
-    console.log("stored");
-    this.boxService.readPasswords().then(passwords => {
-      this.accounts = passwords;
-    });
+    ]);
+*/
+    // console.log('stored');
+  }
+
+  checkForAccounts() {
+    if (!this.passwordService.accountList) {
+      setInterval(() => {
+        this.checkForAccounts();
+      }, 100);
+    } else {
+      this.accounts = this.passwordService.accountList;
+    }
   }
 }
